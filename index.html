@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Три Цены Finance RU</title>
+  <meta name="application-name" content="Три Цены Finance RU">
+  <meta name="apple-mobile-web-app-title" content="Три Цены Finance RU">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <style>
+    :root{--bg:#f6f8fc;--card:rgba(255,255,255,.84);--text:#18233a;--muted:#70809a;--blue:#169be8;--border:rgba(21,64,103,.10)}
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:radial-gradient(circle at 10% 0%,#eaf7ff 0,transparent 34%),radial-gradient(circle at 92% 12%,#f7efff 0,transparent 35%),var(--bg);color:var(--text);min-height:100vh;display:grid;place-items:center;padding:24px}
+    .wrap{width:min(520px,100%)} .card{background:var(--card);border:1px solid var(--border);border-radius:30px;padding:30px;box-shadow:0 24px 70px rgba(25,51,79,.10);backdrop-filter:blur(18px)}
+    .logo{width:126px;height:126px;border-radius:28px;background:#fff;display:block;margin:0 auto 22px;object-fit:contain;box-shadow:0 12px 30px rgba(31,65,97,.08)}
+    h1{font-size:28px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.5;margin:0 auto 25px;max-width:390px}
+    .btn{width:100%;min-height:52px;border-radius:16px;border:1px solid rgba(22,155,232,.25);background:rgba(255,255,255,.72);color:#146fa7;font-weight:700;font-size:16px;cursor:pointer;transition:.18s ease}.btn:hover{transform:translateY(-1px);border-color:rgba(22,155,232,.55);box-shadow:0 8px 24px rgba(22,155,232,.12)}.btn:active{transform:scale(.99)}
+    .primary{background:linear-gradient(135deg,#22a7ef,#168bd4);color:#fff;border-color:transparent;margin-top:10px}
+    .hint{margin-top:20px;background:rgba(244,248,253,.8);border:1px solid var(--border);border-radius:18px;padding:16px;color:#52647e;font-size:14px;line-height:1.5}
+    .steps{margin:8px 0 0;padding-left:20px}.steps li{margin:6px 0}.badge{display:inline-flex;align-items:center;gap:7px;padding:7px 11px;border-radius:999px;background:#eef8fe;color:#177db8;font-size:12px;font-weight:700;margin-bottom:18px}
+    .dot{width:7px;height:7px;background:#19a0ea;border-radius:50%;box-shadow:0 0 0 5px rgba(25,160,234,.11)}
+    .launching{text-align:center;color:var(--muted);font-size:14px}.spinner{width:34px;height:34px;border:3px solid #dbeaf3;border-top-color:#169be8;border-radius:50%;margin:20px auto;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" id="installView">
+      <img class="logo" src="icons/icon-512.png" alt="Три Цены">
+      <div class="badge"><span class="dot"></span>Мобильная версия</div>
+      <h1>Три Цены Finance RU</h1>
+      <p class="sub">Финансовая платформа компании. Установите ярлык на экран телефона для быстрого доступа.</p>
+      <button class="btn primary" id="installBtn" type="button" hidden>Установить приложение</button>
+      <button class="btn" id="openBtn" type="button">Открыть Finance</button>
+      <div class="hint" id="iosHint" hidden>
+        <strong>На iPhone:</strong>
+        <ol class="steps"><li>Нажмите «Поделиться» в Safari.</li><li>Выберите «На экран Домой».</li><li>Нажмите «Добавить».</li></ol>
+      </div>
+    </section>
+    <section class="card" id="launchView" hidden>
+      <img class="logo" src="icons/icon-512.png" alt="Три Цены">
+      <h1>Три Цены Finance RU</h1>
+      <div class="spinner"></div>
+      <p class="launching">Открываем финансовую платформу…</p>
+    </section>
+  </main>
+  <script>
+    const TARGET='https://3ceni-finance-platform.streamlit.app';
+    const isStandalone=window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone===true;
+    const ua=navigator.userAgent||'';
+    const isIOS=/iPhone|iPad|iPod/i.test(ua);
+    const isMobile=/Android|iPhone|iPad|iPod|Mobile/i.test(ua);
+    const installView=document.getElementById('installView');
+    const launchView=document.getElementById('launchView');
+    const openBtn=document.getElementById('openBtn');
+    const iosHint=document.getElementById('iosHint');
+    const installBtn=document.getElementById('installBtn');
+    let deferredPrompt=null;
+    function launch(){installView.hidden=true;launchView.hidden=false;setTimeout(()=>location.replace(TARGET),450)}
+    openBtn.addEventListener('click',launch);
+    if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+    window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false;});
+    installBtn.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true;});
+    if(isIOS && !isStandalone) iosHint.hidden=false;
+    if(isStandalone) launch();
+    else if(!isMobile) launch();
+  </script>
+</body>
+</html>
