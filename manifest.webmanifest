@@ -2,7 +2,7 @@
   "name": "Три Цены Finance RU",
   "short_name": "Три Цены",
   "description": "3Ceni Finance Platform",
-  "start_url": "./?source=pwa",
+  "start_url": "./?source=pwa&v=3",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait-primary",

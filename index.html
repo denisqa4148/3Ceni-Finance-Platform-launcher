@@ -10,54 +10,48 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#f7f9fc">
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="manifest" href="./manifest.webmanifest?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=3">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png?v=3">
 <style>
 :root{--bg:#f7f9fc;--card:#fff;--text:#18233a;--muted:#71809a;--blue:#168fd9;--line:#e8edf4}
 *{box-sizing:border-box}html,body{margin:0;width:100%;min-height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
-body{padding:max(22px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom))}
-.wrap{max-width:520px;margin:0 auto}.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 55px rgba(35,55,88,.08)}
-.logo{width:116px;height:116px;display:block;margin:2px auto 16px;border-radius:26px;object-fit:contain;background:#fff}
-h1{font-size:27px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.45;margin:0 0 22px}
-.platform{display:flex;gap:8px;margin:0 0 18px}.pill{flex:1;padding:10px;border:1px solid var(--line);border-radius:13px;text-align:center;font-size:13px;font-weight:750;background:#fafcff}
-.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:16px;background:#f7f9fc}.n{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#e8f4fd;color:#167fc1;font-weight:800}.step b{display:block;font-size:14px;margin:2px 0 2px}.step span{font-size:13px;line-height:1.35;color:var(--muted)}
-.install{width:100%;min-height:50px;margin-top:16px;border:0;border-radius:15px;background:#168fd9;color:white;font-size:15px;font-weight:800}
-.videoTitle{font-size:15px;font-weight:800;margin:22px 0 10px}.video{width:100%;border-radius:18px;background:#eef2f7;display:block}
-.note{font-size:12px;line-height:1.4;color:var(--muted);text-align:center;margin:14px 4px 0}
-#appView{position:fixed;inset:0;background:#fff;z-index:9999}#appFrame{width:100%;height:100%;border:0;display:block;background:#fff}
-[hidden]{display:none!important}
+body{padding:max(22px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom))}.wrap{max-width:520px;margin:0 auto}.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 55px rgba(35,55,88,.08)}
+.logo{width:132px;height:132px;display:block;margin:0 auto 16px;border-radius:28px;object-fit:contain;background:#fff}h1{font-size:27px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.45;margin:0 0 22px}
+.platform{display:flex;gap:8px;margin:0 0 18px}.pill{flex:1;padding:10px;border:1px solid var(--line);border-radius:13px;text-align:center;font-size:13px;font-weight:750;background:#fafcff}.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:16px;background:#f7f9fc}.n{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#e8f4fd;color:#167fc1;font-weight:800}.step b{display:block;font-size:14px;margin:2px 0 2px}.step span{font-size:13px;line-height:1.35;color:var(--muted)}
+.install{width:100%;min-height:50px;margin-top:16px;border:0;border-radius:15px;background:#168fd9;color:white;font-size:15px;font-weight:800}.videoTitle{font-size:15px;font-weight:800;margin:22px 0 10px}.video{width:100%;border-radius:18px;background:#eef2f7;display:block}.note{font-size:12px;line-height:1.4;color:var(--muted);text-align:center;margin:14px 4px 0}
+#appView{position:fixed;inset:0;background:#fff;z-index:9999}#appFrame{width:100%;height:100%;border:0;display:block;background:#fff}[hidden]{display:none!important}
 </style>
 </head>
 <body>
 <main class="wrap" id="installView">
 <section class="card">
-<img class="logo" src="./icons/icon-512.png" alt="Три Цены">
+<img class="logo" src="./icons/icon-512.png?v=3" alt="Три Цены">
 <h1>Три Цены Finance RU</h1>
-<p class="sub">Установите приложение на экран телефона. После установки Finance будет запускаться с фирменного значка.</p>
-<div class="platform"><div class="pill" id="iosPill">iPhone / iPad</div><div class="pill" id="androidPill">Android</div></div>
+<p class="sub">Установите ярлык на экран телефона. После установки Finance будет открываться как отдельное веб-приложение.</p>
+<div class="platform"><div class="pill">iPhone / iPad</div><div class="pill">Android</div></div>
 <div class="steps" id="iosSteps">
- <div class="step"><div class="n">1</div><div><b>Откройте эту страницу в Safari</b><span>Установка на iPhone выполняется именно из Safari.</span></div></div>
+ <div class="step"><div class="n">1</div><div><b>Откройте эту страницу в Safari</b><span>Для iPhone установка выполняется из Safari.</span></div></div>
  <div class="step"><div class="n">2</div><div><b>Нажмите «Поделиться»</b><span>Кнопка со стрелкой вверх находится в панели Safari.</span></div></div>
  <div class="step"><div class="n">3</div><div><b>Выберите «На экран Домой»</b><span>При необходимости прокрутите список действий.</span></div></div>
- <div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>Оставьте включённым «Открыть как веб-приложение», если iOS показывает этот переключатель.</span></div></div>
+ <div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>Оставьте включённым «Открыть как веб-приложение».</span></div></div>
 </div>
 <div class="steps" id="androidSteps" hidden>
  <div class="step"><div class="n">1</div><div><b>Откройте страницу в Chrome</b><span>Используйте Chrome на Android.</span></div></div>
- <div class="step"><div class="n">2</div><div><b>Нажмите «Установить приложение»</b><span>Если кнопка ниже доступна — используйте её. Иначе откройте меню Chrome → «Установить приложение».</span></div></div>
+ <div class="step"><div class="n">2</div><div><b>Установите приложение</b><span>Нажмите кнопку ниже или откройте меню Chrome → «Установить приложение».</span></div></div>
 </div>
 <button class="install" id="installBtn" hidden>Установить приложение</button>
-<div class="videoTitle">Видеоинструкция для iPhone</div>
-<video class="video" controls playsinline preload="metadata" poster="./icons/icon-512.png"><source src="./assets/install-guide.mp4" type="video/mp4"></video>
-<p class="note">После установки открывайте Finance только через ярлык «Три Цены Finance RU».</p>
+<div class="videoTitle">Видеоинструкция</div>
+<video class="video" controls playsinline preload="metadata" poster="./icons/icon-512.png?v=3"><source src="./assets/install-guide.mp4?v=3" type="video/mp4"></video>
+<p class="note">На этой странице нет кнопки запуска Finance: она предназначена только для установки ярлыка.</p>
 </section>
 </main>
 <div id="appView" hidden><iframe id="appFrame" title="Три Цены Finance RU" allow="clipboard-read; clipboard-write; camera; microphone"></iframe></div>
 <script>
 const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&embed_options=hide_loading_screen';
 const standalone=matchMedia('(display-mode: standalone)').matches || navigator.standalone===true;
-const ua=navigator.userAgent||'', ios=/iPhone|iPad|iPod/i.test(ua), android=/Android/i.test(ua);
-const installBtn=document.getElementById('installBtn'), iosSteps=document.getElementById('iosSteps'), androidSteps=document.getElementById('androidSteps');
+const ua=navigator.userAgent||'', android=/Android/i.test(ua);
+const installBtn=document.getElementById('installBtn');
 let deferredPrompt=null;
 function openInstalledApp(){
  document.getElementById('installView').hidden=true;
@@ -66,10 +60,10 @@ function openInstalledApp(){
 }
 if(standalone){ openInstalledApp(); }
 else{
- if(android){iosSteps.hidden=true;androidSteps.hidden=false;}
+ if(android){document.getElementById('iosSteps').hidden=true;document.getElementById('androidSteps').hidden=false;}
  window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;installBtn.hidden=false;});
  installBtn.addEventListener('click',async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;installBtn.hidden=true;});
 }
-if('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js').catch(()=>{});
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js?v=3',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});}
 </script>
 </body></html>
