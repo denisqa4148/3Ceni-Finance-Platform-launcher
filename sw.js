@@ -1,4 +1,4 @@
-const CACHE='tri-ceny-finance-launcher-v12';
+const CACHE='tri-ceny-finance-launcher-v13';
 const STATIC=['./icons/apple-touch-icon.png?v=12','./icons/icon-192.png?v=12','./icons/icon-512.png?v=12'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
