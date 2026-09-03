@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Три Цены Finance RU">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#f7f9fc">
-<link rel="manifest" href="./manifest.webmanifest?v=17"><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=17"><link rel="icon" href="./icons/icon-192.png?v=17">
+<link rel="manifest" href="./manifest.webmanifest?v=19"><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=19"><link rel="icon" href="./icons/icon-192.png?v=19">
 <style>
 :root{--bg:#f7f9fc;--card:#fff;--text:#18233a;--muted:#71809a;--blue:#168fd9;--line:#e8edf4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%;text-size-adjust:100%}body.installing{padding:max(22px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom));height:auto;min-height:100%}.wrap{max-width:520px;margin:0 auto}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 55px rgba(35,55,88,.08)}.logo{width:142px;height:142px;display:block;margin:0 auto 16px;border-radius:30px;object-fit:contain;background:#fff}h1{font-size:27px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.45;margin:0 0 22px}.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:16px;background:#f7f9fc}.n{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#e8f4fd;color:#167fc1;font-weight:800}.step b{display:block;font-size:14px;margin:2px 0 2px}.step span{font-size:13px;line-height:1.35;color:var(--muted)}.note{font-size:12px;line-height:1.45;color:var(--muted);text-align:center;margin:15px 5px 0}.install{width:100%;min-height:50px;margin-top:16px;border:0;border-radius:15px;background:#168fd9;color:white;font-size:15px;font-weight:800}[hidden]{display:none!important}
 #appView{position:fixed;inset:0;background:#fff;overflow:hidden;z-index:50}
@@ -22,19 +22,30 @@
 #pushGate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(20,31,52,.20);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}#pushGate .box{width:min(360px,calc(100vw - 38px));padding:24px 20px;border-radius:28px;background:rgba(252,253,255,.94);box-shadow:0 24px 70px rgba(39,56,88,.22);text-align:center}#pushGate .bell{font-size:38px}#pushGate b{display:block;font-size:20px;margin:10px 0 6px}#pushGate p{font-size:13px;line-height:1.45;color:#71809a;margin:0 0 17px}#pushGate button{width:100%;min-height:48px;border:0;border-radius:15px;background:linear-gradient(135deg,#1595df,#7254d9);color:#fff;font-size:14px;font-weight:800}#pushGate .later{margin-top:9px;background:transparent;color:#71809a;border:1px solid #e3e8f1}
 </style></head>
 <body class="installing">
-<main class="wrap" id="installView"><section class="card"><img class="logo" src="./icons/icon-512.png?v=17" alt="Три Цены"><h1>Три Цены Finance RU</h1><p class="sub">Установите приложение на экран телефона. После установки запускайте Finance только с фирменного ярлыка.</p><div class="steps" id="iosSteps"><div class="step"><div class="n">1</div><div><b>Откройте страницу в Safari</b><span>На iPhone установка выполняется именно из Safari.</span></div></div><div class="step"><div class="n">2</div><div><b>Нажмите «Поделиться»</b><span>Кнопка со стрелкой вверх находится в панели Safari.</span></div></div><div class="step"><div class="n">3</div><div><b>Выберите «На экран Домой»</b><span>Оставьте включённым «Открыть как веб-приложение».</span></div></div><div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>На экране появится «Три Цены Finance RU».</span></div></div></div><div class="steps" id="androidSteps" hidden><div class="step"><div class="n">1</div><div><b>Откройте страницу в Chrome</b><span>Используйте меню браузера «Установить приложение».</span></div></div><div class="step"><div class="n">2</div><div><b>Подтвердите установку</b><span>После этого запускайте Finance с нового ярлыка.</span></div></div></div><button class="install" id="installBtn" hidden>Установить приложение</button><p class="note">Кнопки «Открыть Finance» здесь нет специально — эта страница только для установки.</p></section></main>
+<main class="wrap" id="installView"><section class="card"><img class="logo" src="./icons/icon-512.png?v=19" alt="Три Цены"><h1>Три Цены Finance RU</h1><p class="sub">Установите приложение на экран телефона. После установки запускайте Finance только с фирменного ярлыка.</p><div class="steps" id="iosSteps"><div class="step"><div class="n">1</div><div><b>Откройте страницу в Safari</b><span>На iPhone установка выполняется именно из Safari.</span></div></div><div class="step"><div class="n">2</div><div><b>Нажмите «Поделиться»</b><span>Кнопка со стрелкой вверх находится в панели Safari.</span></div></div><div class="step"><div class="n">3</div><div><b>Выберите «На экран Домой»</b><span>Оставьте включённым «Открыть как веб-приложение».</span></div></div><div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>На экране появится «Три Цены Finance RU».</span></div></div></div><div class="steps" id="androidSteps" hidden><div class="step"><div class="n">1</div><div><b>Откройте страницу в Chrome</b><span>Используйте меню браузера «Установить приложение».</span></div></div><div class="step"><div class="n">2</div><div><b>Подтвердите установку</b><span>После этого запускайте Finance с нового ярлыка.</span></div></div></div><button class="install" id="installBtn" hidden>Установить приложение</button><p class="note">Кнопки «Открыть Finance» здесь нет специально — эта страница только для установки.</p></section></main>
 <div id="appView" hidden>
-<div id="appSplash"><div class="splashBox"><img src="./icons/icon-512.png?v=17" alt="Три Цены"><b>Три Цены Finance RU</b><span>Загружаем финансовую платформу…</span><div class="spin"></div></div></div>
+<div id="appSplash"><div class="splashBox"><img src="./icons/icon-512.png?v=19" alt="Три Цены"><b>Три Цены Finance RU</b><span>Загружаем финансовую платформу…</span><div class="spin"></div></div></div>
 <iframe id="appFrame" title="Три Цены Finance RU" allow="clipboard-read; clipboard-write; camera; microphone"></iframe>
 <div class="cloudMask" aria-hidden="true"></div>
 </div>
 <div id="pushGate" hidden><div class="box"><div class="bell">🔔</div><b>Включить уведомления</b><p>Разрешите «Три Цены Finance RU» присылать системные уведомления этого устройства, даже когда приложение закрыто.</p><button id="pushYes">Включить уведомления</button><button class="later" id="pushLater">Не сейчас</button><div id="pushMsg" class="note"></div></div></div>
 <script>
-const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell=1&source=launcher_v17';
+const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell=1&source=launcher_v19';
 const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 const ua=navigator.userAgent||'',android=/Android/i.test(ua);let deferredPrompt=null,bootstrap=null,pushBusy=false,appOpened=false;
 const frame=document.getElementById('appFrame'),gate=document.getElementById('pushGate'),msg=document.getElementById('pushMsg');
 const PUSH_GATE_DONE_KEY='3ceni_push_gate_completed';
+const AUTH_TOKEN_KEY='3ceni_finance_resume_token_launcher_v19';
+function launcherAuthToken(){try{return localStorage.getItem(AUTH_TOKEN_KEY)||''}catch(e){return ''}}
+function rememberLauncherAuth(token){try{if(token)localStorage.setItem(AUTH_TOKEN_KEY,String(token))}catch(e){}}
+function forgetLauncherAuth(){try{localStorage.removeItem(AUTH_TOKEN_KEY)}catch(e){}}
+function appTarget(extraParams=null){
+  const u=new URL(TARGET);
+  const token=launcherAuthToken();
+  if(token)u.searchParams.set('_session',token);
+  if(extraParams){for(const [k,v] of Object.entries(extraParams)){if(v!==undefined&&v!==null&&String(v)!=='')u.searchParams.set(k,String(v));}}
+  return u.toString();
+}
 let preloginGate=false;
 function gateCompleted(){try{return localStorage.getItem(PUSH_GATE_DONE_KEY)==='1'}catch(e){return false}}
 function completeGate(){try{localStorage.setItem(PUSH_GATE_DONE_KEY,'1')}catch(e){};try{gate.hidden=true}catch(e){}}
@@ -42,7 +53,7 @@ function completeGate(){try{localStorage.setItem(PUSH_GATE_DONE_KEY,'1')}catch(e
 function postToApp(payload){try{if(frame.contentWindow)frame.contentWindow.postMessage(payload,'*');}catch(e){}}
 function b64ToBytes(value){const padding='='.repeat((4-value.length%4)%4),base64=(value+padding).replace(/-/g,'+').replace(/_/g,'/'),raw=atob(base64);return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)))}
 function encodeSubscription(sub){const json=JSON.stringify(sub.toJSON?sub.toJSON():sub);const bytes=new TextEncoder().encode(json);let binary='';bytes.forEach(b=>binary+=String.fromCharCode(b));return btoa(binary).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')}
-function bindSubscriptionToServer(sub){if(!bootstrap||!sub)return false;const endpoint=String((sub.toJSON?sub.toJSON():sub).endpoint||'');const key='3ceni_bound_session_v17:'+String(bootstrap.login||'');try{if(sessionStorage.getItem(key)===endpoint)return false;sessionStorage.setItem(key,endpoint)}catch(e){}const u=new URL(TARGET);u.searchParams.set('_pwa_push_sub',encodeSubscription(sub));u.searchParams.set('_pwa_push_login',String(bootstrap.login||''));u.searchParams.set('_pwa_push_token',String(bootstrap.token||''));frame.src=u.toString();return true}
+function bindSubscriptionToServer(sub){if(!bootstrap||!sub)return false;const endpoint=String((sub.toJSON?sub.toJSON():sub).endpoint||'');const key='3ceni_bound_session_v19:'+String(bootstrap.login||'');try{if(sessionStorage.getItem(key)===endpoint)return false;sessionStorage.setItem(key,endpoint)}catch(e){}const u=new URL(appTarget());u.searchParams.set('_pwa_push_sub',encodeSubscription(sub));u.searchParams.set('_pwa_push_login',String(bootstrap.login||''));u.searchParams.set('_pwa_push_token',String(bootstrap.token||''));frame.src=u.toString();return true}
 async function ensurePush(interactive=false){
  if(appOpened && interactive){try{gate.hidden=true}catch(e){};return;}
  if(pushBusy||!('serviceWorker'in navigator)||!('PushManager'in window)||!window.Notification)return;
@@ -51,21 +62,21 @@ async function ensurePush(interactive=false){
    if(permission==='default'){
      // Permission UI is allowed only in the pre-login launcher gate.
      // Once Streamlit is open, bootstrap/state checks must never show this gate again.
-     if(!interactive){postToApp({type:'3ceni-push-state-v17',state:'default'});gate.hidden=true;pushBusy=false;return;}
+     if(!interactive){postToApp({type:'3ceni-push-state-v19',state:'default'});gate.hidden=true;pushBusy=false;return;}
      permission=await Notification.requestPermission(); completeGate();
    }
    if(permission==='granted'){ completeGate(); }
    if(permission!=='granted'){
-     postToApp({type:'3ceni-push-state-v17',state:'denied'});gate.hidden=true;
+     postToApp({type:'3ceni-push-state-v19',state:'denied'});gate.hidden=true;
      if(preloginGate){preloginGate=false;openApp();}
      return;
    }
    try{localStorage.setItem('3ceni_prelogin_push_permission','granted')}catch(e){}
    // Welcome is local and can be shown immediately, before login. Exactly once per installed PWA.
-   const welcomeReg=await navigator.serviceWorker.register('./sw.js?v=17',{updateViaCache:'none'});await navigator.serviceWorker.ready;
+   const welcomeReg=await navigator.serviceWorker.register('./sw.js?v=19',{updateViaCache:'none'});await navigator.serviceWorker.ready;
    try{
      if(!localStorage.getItem('3ceni_push_welcome_v8')){
-       await welcomeReg.showNotification('Три Цены Finance RU',{body:'Добро пожаловать в Три Цены финансовую платформу.',icon:'./icons/icon-192.png?v=17',badge:'./icons/icon-192.png?v=17',tag:'3ceni-welcome',data:{url:'./?source=pwa&v=16'}});
+       await welcomeReg.showNotification('Три Цены Finance RU',{body:'Добро пожаловать в Три Цены финансовую платформу.',icon:'./icons/icon-192.png?v=19',badge:'./icons/icon-192.png?v=19',tag:'3ceni-welcome',data:{url:'./?source=pwa&v=19'}});
        localStorage.setItem('3ceni_push_welcome_v8','1');
      }
    }catch(e){console.warn('3Ceni welcome notification',e);}
@@ -77,10 +88,10 @@ async function ensurePush(interactive=false){
    const reg=welcomeReg;
    let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64ToBytes(bootstrap.publicKey)});
    const rebound=bindSubscriptionToServer(sub);
-   if(!rebound)postToApp({type:'3ceni-push-subscription-v17',login:bootstrap.login,token:bootstrap.token,subscription:sub.toJSON()});
-   postToApp({type:'3ceni-push-state-v17',state:'granted'});gate.hidden=true;
- }catch(e){console.error('3Ceni launcher push',e);if(!appOpened&&!gateCompleted()){msg.textContent='Не удалось подключить уведомления. Попробуйте ещё раз.';gate.hidden=false;}else{gate.hidden=true;postToApp({type:'3ceni-push-state-v17',state:(window.Notification&&Notification.permission)||'unsupported'});}}finally{pushBusy=false;}}
-window.addEventListener('message',event=>{const d=event.data||{};if(d.type==='3ceni-push-bootstrap-v17'){bootstrap=d;ensurePush(false);}else if(d.type==='3ceni-push-request-v17'){const s=(window.Notification&&Notification.permission)||'unsupported';postToApp({type:'3ceni-push-state-v17',state:s});}else if(d.type==='3ceni-push-state-request-v17'){const s=(window.Notification&&Notification.permission)||'unsupported';postToApp({type:'3ceni-push-state-v17',state:s});if(s==='granted'&&bootstrap)ensurePush(false);}else if(d.type==='3ceni-push-test-v17'){(async()=>{try{if(Notification.permission!=='granted')throw new Error('Уведомления не разрешены');const reg=await navigator.serviceWorker.ready;await reg.showNotification('Три Цены Finance RU',{body:'Тестовое уведомление. Всё работает ✅',icon:'./icons/icon-192.png?v=17',badge:'./icons/icon-192.png?v=17',tag:'3ceni-test-'+Date.now()});postToApp({type:'3ceni-push-test-result-v17',ok:true});}catch(e){postToApp({type:'3ceni-push-test-result-v17',ok:false,message:String(e&&e.message||e)});}})();}});
+   if(!rebound)postToApp({type:'3ceni-push-subscription-v19',login:bootstrap.login,token:bootstrap.token,subscription:sub.toJSON()});
+   postToApp({type:'3ceni-push-state-v19',state:'granted'});gate.hidden=true;
+ }catch(e){console.error('3Ceni launcher push',e);if(!appOpened&&!gateCompleted()){msg.textContent='Не удалось подключить уведомления. Попробуйте ещё раз.';gate.hidden=false;}else{gate.hidden=true;postToApp({type:'3ceni-push-state-v19',state:(window.Notification&&Notification.permission)||'unsupported'});}}finally{pushBusy=false;}}
+window.addEventListener('message',event=>{const d=event.data||{};if(d.type==='3ceni-auth-token-v19'){rememberLauncherAuth(d.token);return;}else if(d.type==='3ceni-auth-clear-v19'){forgetLauncherAuth();return;}else if(d.type==='3ceni-push-bootstrap-v19'){bootstrap=d;ensurePush(false);}else if(d.type==='3ceni-push-request-v19'){const s=(window.Notification&&Notification.permission)||'unsupported';postToApp({type:'3ceni-push-state-v19',state:s});}else if(d.type==='3ceni-push-state-request-v19'){const s=(window.Notification&&Notification.permission)||'unsupported';postToApp({type:'3ceni-push-state-v19',state:s});if(s==='granted'&&bootstrap)ensurePush(false);}else if(d.type==='3ceni-push-test-v19'){(async()=>{try{if(Notification.permission!=='granted')throw new Error('Уведомления не разрешены');const reg=await navigator.serviceWorker.ready;await reg.showNotification('Три Цены Finance RU',{body:'Тестовое уведомление. Всё работает ✅',icon:'./icons/icon-192.png?v=19',badge:'./icons/icon-192.png?v=19',tag:'3ceni-test-'+Date.now()});postToApp({type:'3ceni-push-test-result-v19',ok:true});}catch(e){postToApp({type:'3ceni-push-test-result-v19',ok:false,message:String(e&&e.message||e)});}})();}});
 document.getElementById('pushYes').onclick=()=>{ensurePush(true);};document.getElementById('pushLater').onclick=()=>{completeGate();if(preloginGate){preloginGate=false;openApp();}};
 function openApp(){
  appOpened=true; completeGate(); gate.dataset.locked='1'; preloginGate=false;
@@ -94,10 +105,10 @@ function openApp(){
  let settled=false;
  const reveal=()=>{if(settled)return;settled=true;setTimeout(()=>splash&&splash.classList.add('done'),650);};
  frame.addEventListener('load',reveal,{once:true});
- if(!frame.src)frame.src=TARGET;
+ if(!frame.getAttribute('src'))frame.src=appTarget();
  // Never leave a blank page forever if iOS delays the iframe load event.
  setTimeout(reveal,12000);
 }
 if(standalone){let remembered=false;try{remembered=localStorage.getItem('3ceni_prelogin_push_permission')==='granted'}catch(e){}if(!gateCompleted()&&window.Notification&&Notification.permission==='default'&&!remembered&&('serviceWorker'in navigator)&&('PushManager'in window)){gate.hidden=false;preloginGate=true;}else{openApp();}}else{if(android){document.getElementById('iosSteps').hidden=true;document.getElementById('androidSteps').hidden=false;}window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').hidden=false});document.getElementById('installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').hidden=true}}
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=17',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=19',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 </script></body></html>
