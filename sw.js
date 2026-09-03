@@ -1,5 +1,5 @@
-const CACHE='tri-ceny-finance-launcher-v8';
-const STATIC=['./icons/apple-touch-icon.png?v=8','./icons/icon-192.png?v=8','./icons/icon-512.png?v=8'];
+const CACHE='tri-ceny-finance-launcher-v9';
+const STATIC=['./icons/apple-touch-icon.png?v=9','./icons/icon-192.png?v=9','./icons/icon-512.png?v=9'];
 self.addEventListener('install',event=>{event.waitUntil(caches.open(CACHE).then(c=>c.addAll(STATIC)));self.skipWaiting();});
 self.addEventListener('activate',event=>{event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))));self.clients.claim();});
 self.addEventListener('fetch',event=>{
@@ -12,16 +12,16 @@ self.addEventListener('push',event=>{
   const title=data.title||'Три Цены Finance RU';
   const options={
     body:data.body||'Новое уведомление',
-    icon:'./icons/icon-192.png?v=8',badge:'./icons/icon-192.png?v=8',
+    icon:'./icons/icon-192.png?v=9',badge:'./icons/icon-192.png?v=9',
     tag:data.tag||'3ceni-notification',renotify:true,
-    data:{url:'./?source=pwa&v=8'}
+    data:{url:'./?source=pwa&v=9'}
   };
   event.waitUntil(self.registration.showNotification(title,options));
 });
 self.addEventListener('notificationclick',event=>{
   event.notification.close();
   event.waitUntil(clients.matchAll({type:'window',includeUncontrolled:true}).then(list=>{
-    for(const c of list){if('focus' in c){try{c.navigate('./?source=pwa&v=8');}catch(e){}return c.focus();}}
-    return clients.openWindow?clients.openWindow('./?source=pwa&v=8'):undefined;
+    for(const c of list){if('focus' in c){try{c.navigate('./?source=pwa&v=9');}catch(e){}return c.focus();}}
+    return clients.openWindow?clients.openWindow('./?source=pwa&v=9'):undefined;
   }));
 });
