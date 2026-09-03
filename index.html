@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="ru">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Три Цены Finance RU</title>
 <meta name="application-name" content="Три Цены Finance RU">
 <meta name="apple-mobile-web-app-title" content="Три Цены Finance RU">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#f7f9fc">
-<link rel="manifest" href="./manifest.webmanifest?v=6"><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=6"><link rel="icon" href="./icons/icon-192.png?v=6">
+<link rel="manifest" href="./manifest.webmanifest?v=7"><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=7"><link rel="icon" href="./icons/icon-192.png?v=7">
 <style>
-:root{--bg:#f7f9fc;--card:#fff;--text:#18233a;--muted:#71809a;--blue:#168fd9;--line:#e8edf4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}body.installing{padding:max(22px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom));height:auto;min-height:100%}.wrap{max-width:520px;margin:0 auto}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 55px rgba(35,55,88,.08)}.logo{width:142px;height:142px;display:block;margin:0 auto 16px;border-radius:30px;object-fit:contain;background:#fff}h1{font-size:27px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.45;margin:0 0 22px}.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:16px;background:#f7f9fc}.n{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#e8f4fd;color:#167fc1;font-weight:800}.step b{display:block;font-size:14px;margin:2px 0 2px}.step span{font-size:13px;line-height:1.35;color:var(--muted)}.note{font-size:12px;line-height:1.45;color:var(--muted);text-align:center;margin:15px 5px 0}.install{width:100%;min-height:50px;margin-top:16px;border:0;border-radius:15px;background:#168fd9;color:white;font-size:15px;font-weight:800}[hidden]{display:none!important}
+:root{--bg:#f7f9fc;--card:#fff;--text:#18233a;--muted:#71809a;--blue:#168fd9;--line:#e8edf4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%;text-size-adjust:100%}body.installing{padding:max(22px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom));height:auto;min-height:100%}.wrap{max-width:520px;margin:0 auto}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 55px rgba(35,55,88,.08)}.logo{width:142px;height:142px;display:block;margin:0 auto 16px;border-radius:30px;object-fit:contain;background:#fff}h1{font-size:27px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.45;margin:0 0 22px}.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:16px;background:#f7f9fc}.n{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#e8f4fd;color:#167fc1;font-weight:800}.step b{display:block;font-size:14px;margin:2px 0 2px}.step span{font-size:13px;line-height:1.35;color:var(--muted)}.note{font-size:12px;line-height:1.45;color:var(--muted);text-align:center;margin:15px 5px 0}.install{width:100%;min-height:50px;margin-top:16px;border:0;border-radius:15px;background:#168fd9;color:white;font-size:15px;font-weight:800}[hidden]{display:none!important}
 #appView{position:fixed;inset:0;background:#fff;overflow:hidden;z-index:50}
 #appSplash{position:absolute;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#f5faff,#fbf6ff);transition:opacity .35s ease,visibility .35s ease}
 #appSplash.done{opacity:0;visibility:hidden;pointer-events:none}
@@ -18,13 +18,13 @@
 #appSplash b{display:block;margin-top:18px;font-size:21px;color:#18233a}
 #appSplash span{display:block;margin-top:7px;font-size:14px;color:#7a89a1}
 #appSplash .spin{width:34px;height:34px;margin:18px auto 0;border-radius:50%;border:4px solid #e5ebf3;border-top-color:#168fd9;animation:ceniSpin .8s linear infinite}
-@keyframes ceniSpin{to{transform:rotate(360deg)}}#appFrame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}.cloudMask{position:absolute;z-index:80;left:0;right:0;bottom:0;height:54px;background:linear-gradient(180deg,rgba(247,249,252,.95),#f7f9fc);border-top:1px solid rgba(226,231,239,.75);pointer-events:auto}
+@keyframes ceniSpin{to{transform:rotate(360deg)}}#appFrame{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff;transform-origin:0 0}@media(max-width:600px){#appFrame{width:105.27%;height:105.27%;transform:scale(.95)}}.cloudMask{position:absolute;z-index:80;left:0;right:0;bottom:0;height:54px;background:linear-gradient(180deg,rgba(247,249,252,.95),#f7f9fc);border-top:1px solid rgba(226,231,239,.75);pointer-events:auto}
 #pushGate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(20,31,52,.20);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}#pushGate .box{width:min(360px,calc(100vw - 38px));padding:24px 20px;border-radius:28px;background:rgba(252,253,255,.94);box-shadow:0 24px 70px rgba(39,56,88,.22);text-align:center}#pushGate .bell{font-size:38px}#pushGate b{display:block;font-size:20px;margin:10px 0 6px}#pushGate p{font-size:13px;line-height:1.45;color:#71809a;margin:0 0 17px}#pushGate button{width:100%;min-height:48px;border:0;border-radius:15px;background:linear-gradient(135deg,#1595df,#7254d9);color:#fff;font-size:14px;font-weight:800}#pushGate .later{margin-top:9px;background:transparent;color:#71809a;border:1px solid #e3e8f1}
 </style></head>
 <body class="installing">
-<main class="wrap" id="installView"><section class="card"><img class="logo" src="./icons/icon-512.png?v=6" alt="Три Цены"><h1>Три Цены Finance RU</h1><p class="sub">Установите приложение на экран телефона. После установки запускайте Finance только с фирменного ярлыка.</p><div class="steps" id="iosSteps"><div class="step"><div class="n">1</div><div><b>Откройте страницу в Safari</b><span>На iPhone установка выполняется именно из Safari.</span></div></div><div class="step"><div class="n">2</div><div><b>Нажмите «Поделиться»</b><span>Кнопка со стрелкой вверх находится в панели Safari.</span></div></div><div class="step"><div class="n">3</div><div><b>Выберите «На экран Домой»</b><span>Оставьте включённым «Открыть как веб-приложение».</span></div></div><div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>На экране появится «Три Цены Finance RU».</span></div></div></div><div class="steps" id="androidSteps" hidden><div class="step"><div class="n">1</div><div><b>Откройте страницу в Chrome</b><span>Используйте меню браузера «Установить приложение».</span></div></div><div class="step"><div class="n">2</div><div><b>Подтвердите установку</b><span>После этого запускайте Finance с нового ярлыка.</span></div></div></div><button class="install" id="installBtn" hidden>Установить приложение</button><p class="note">Кнопки «Открыть Finance» здесь нет специально — эта страница только для установки.</p></section></main>
+<main class="wrap" id="installView"><section class="card"><img class="logo" src="./icons/icon-512.png?v=7" alt="Три Цены"><h1>Три Цены Finance RU</h1><p class="sub">Установите приложение на экран телефона. После установки запускайте Finance только с фирменного ярлыка.</p><div class="steps" id="iosSteps"><div class="step"><div class="n">1</div><div><b>Откройте страницу в Safari</b><span>На iPhone установка выполняется именно из Safari.</span></div></div><div class="step"><div class="n">2</div><div><b>Нажмите «Поделиться»</b><span>Кнопка со стрелкой вверх находится в панели Safari.</span></div></div><div class="step"><div class="n">3</div><div><b>Выберите «На экран Домой»</b><span>Оставьте включённым «Открыть как веб-приложение».</span></div></div><div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>На экране появится «Три Цены Finance RU».</span></div></div></div><div class="steps" id="androidSteps" hidden><div class="step"><div class="n">1</div><div><b>Откройте страницу в Chrome</b><span>Используйте меню браузера «Установить приложение».</span></div></div><div class="step"><div class="n">2</div><div><b>Подтвердите установку</b><span>После этого запускайте Finance с нового ярлыка.</span></div></div></div><button class="install" id="installBtn" hidden>Установить приложение</button><p class="note">Кнопки «Открыть Finance» здесь нет специально — эта страница только для установки.</p></section></main>
 <div id="appView" hidden>
-<div id="appSplash"><div class="splashBox"><img src="./icons/icon-512.png?v=6" alt="Три Цены"><b>Три Цены Finance RU</b><span>Загружаем финансовую платформу…</span><div class="spin"></div></div></div>
+<div id="appSplash"><div class="splashBox"><img src="./icons/icon-512.png?v=7" alt="Три Цены"><b>Три Цены Finance RU</b><span>Загружаем финансовую платформу…</span><div class="spin"></div></div></div>
 <iframe id="appFrame" title="Три Цены Finance RU" allow="clipboard-read; clipboard-write; camera; microphone"></iframe>
 <div class="cloudMask" aria-hidden="true"></div>
 </div>
@@ -34,24 +34,35 @@ const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell
 const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 const ua=navigator.userAgent||'',android=/Android/i.test(ua);let deferredPrompt=null,bootstrap=null,pushBusy=false;
 const frame=document.getElementById('appFrame'),gate=document.getElementById('pushGate'),msg=document.getElementById('pushMsg');
+let preloginGate=false;
 function postToApp(payload){try{if(frame.contentWindow)frame.contentWindow.postMessage(payload,'*');}catch(e){}}
 function b64ToBytes(value){const padding='='.repeat((4-value.length%4)%4),base64=(value+padding).replace(/-/g,'+').replace(/_/g,'/'),raw=atob(base64);return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)))}
 async function ensurePush(interactive=false){
- if(pushBusy||!bootstrap||!('serviceWorker'in navigator)||!('PushManager'in window)||!window.Notification)return;
+ if(pushBusy||!('serviceWorker'in navigator)||!('PushManager'in window)||!window.Notification)return;
  pushBusy=true;try{
    let permission=Notification.permission;
    if(permission==='default'){
-     if(!interactive){gate.hidden=false;pushBusy=false;return;}
+     if(!interactive){gate.hidden=false;preloginGate=true;pushBusy=false;return;}
      permission=await Notification.requestPermission();
    }
-   if(permission!=='granted'){postToApp({type:'3ceni-push-state-v6',state:'denied'});gate.hidden=true;return;}
-   const reg=await navigator.serviceWorker.register('./sw.js?v=6',{updateViaCache:'none'});await navigator.serviceWorker.ready;
+   if(permission!=='granted'){
+     postToApp({type:'3ceni-push-state-v7',state:'denied'});gate.hidden=true;
+     if(preloginGate){preloginGate=false;openApp();}
+     return;
+   }
+   try{localStorage.setItem('3ceni_prelogin_push_permission_v1','granted')}catch(e){}
+   if(!bootstrap){
+     gate.hidden=true;
+     if(preloginGate){preloginGate=false;openApp();}
+     return; // permission is granted; subscription will be created as soon as login bootstrap arrives
+   }
+   const reg=await navigator.serviceWorker.register('./sw.js?v=7',{updateViaCache:'none'});await navigator.serviceWorker.ready;
    let sub=await reg.pushManager.getSubscription();if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64ToBytes(bootstrap.publicKey)});
-   postToApp({type:'3ceni-push-subscription-v6',login:bootstrap.login,token:bootstrap.token,subscription:sub.toJSON()});
-   postToApp({type:'3ceni-push-state-v6',state:'granted'});gate.hidden=true;
+   postToApp({type:'3ceni-push-subscription-v7',login:bootstrap.login,token:bootstrap.token,subscription:sub.toJSON()});
+   postToApp({type:'3ceni-push-state-v7',state:'granted'});gate.hidden=true;
  }catch(e){console.error('3Ceni launcher push',e);msg.textContent='Не удалось подключить уведомления. Попробуйте ещё раз.';gate.hidden=false;}finally{pushBusy=false;}}
-window.addEventListener('message',event=>{const d=event.data||{};if(d.type==='3ceni-push-bootstrap-v6'){bootstrap=d;ensurePush(false);}else if(d.type==='3ceni-push-request-v6'){ensurePush(true);}});
-document.getElementById('pushYes').onclick=()=>ensurePush(true);document.getElementById('pushLater').onclick=()=>{gate.hidden=true};
+window.addEventListener('message',event=>{const d=event.data||{};if(d.type==='3ceni-push-bootstrap-v7'){bootstrap=d;ensurePush(false);}else if(d.type==='3ceni-push-request-v7'){msg.textContent='';gate.hidden=false;preloginGate=false;}});
+document.getElementById('pushYes').onclick=()=>ensurePush(true);document.getElementById('pushLater').onclick=()=>{gate.hidden=true;if(preloginGate){preloginGate=false;openApp();}};
 function openApp(){
  document.body.classList.remove('installing');
  document.getElementById('installView').hidden=true;
@@ -64,6 +75,6 @@ function openApp(){
  // Never leave a blank page forever if iOS delays the iframe load event.
  setTimeout(reveal,12000);
 }
-if(standalone){openApp();}else{if(android){document.getElementById('iosSteps').hidden=true;document.getElementById('androidSteps').hidden=false;}window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').hidden=false});document.getElementById('installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').hidden=true}}
-if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=6',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+if(standalone){if(window.Notification&&Notification.permission==='default'&&('serviceWorker'in navigator)&&('PushManager'in window)){gate.hidden=false;preloginGate=true;}else{openApp();}}else{if(android){document.getElementById('iosSteps').hidden=true;document.getElementById('androidSteps').hidden=false;}window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').hidden=false});document.getElementById('installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').hidden=true}}
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=7',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
 </script></body></html>
