@@ -65,11 +65,12 @@ function bindSubscriptionToServer(sub){
  u.searchParams.set('_pwa_push_sub',encodeSubscription(sub));
  u.searchParams.set('_pwa_push_login',String(bootstrap.login||''));
  u.searchParams.set('_pwa_push_token',String(bootstrap.token||''));
- pushBindingReload=true;
- try{const splash=document.getElementById('appSplash');if(splash)splash.classList.remove('done')}catch(e){}
- if(revealTimer){clearTimeout(revealTimer);revealTimer=null;}
- frame.src=u.toString();
- return true;
+ // Do not reload the Streamlit iframe after first successful binding.
+ // A reload here makes the launcher splash appear again on iOS and can leave
+ // the installed PWA waiting forever during the second navigation.
+ // The subscription is already stored locally and the app continues normally.
+ try{postToApp({type:'3ceni-push-subscription-v19',login:bootstrap.login,token:bootstrap.token,subscription:sub.toJSON()})}catch(e){}
+ return false;
 }
 async function ensurePush(interactive=false){
  if(appOpened && interactive){try{gate.hidden=true}catch(e){};return;}
