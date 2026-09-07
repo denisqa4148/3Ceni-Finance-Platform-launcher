@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Три Цены Finance RU</title>
+<meta name="application-name" content="Три Цены Finance RU">
+<meta name="apple-mobile-web-app-title" content="Три Цены Finance RU">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#f7f9fc">
+<link rel="manifest" href="./manifest.webmanifest?v=20"><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=20"><link rel="icon" href="./icons/icon-192.png?v=20">
+<style>
+:root{--bg:#f7f9fc;--card:#fff;--text:#18233a;--muted:#71809a;--blue:#168fd9;--line:#e8edf4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%;text-size-adjust:100%}body.installing{padding:max(22px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom));height:auto;min-height:100%}.wrap{max-width:520px;margin:0 auto}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 55px rgba(35,55,88,.08)}.logo{width:142px;height:142px;display:block;margin:0 auto 16px;border-radius:30px;object-fit:contain;background:#fff}h1{font-size:27px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.45;margin:0 0 22px}.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:16px;background:#f7f9fc}.n{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#e8f4fd;color:#167fc1;font-weight:800}.step b{display:block;font-size:14px;margin:2px 0 2px}.step span{font-size:13px;line-height:1.35;color:var(--muted)}.note{font-size:12px;line-height:1.45;color:var(--muted);text-align:center;margin:15px 5px 0}.install{width:100%;min-height:50px;margin-top:16px;border:0;border-radius:15px;background:#168fd9;color:white;font-size:15px;font-weight:800}[hidden]{display:none!important}
+#appView{position:fixed;inset:0;background:#fff;overflow:hidden;z-index:50}
+#appSplash{position:absolute;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#f5faff,#fbf6ff);transition:opacity .35s ease,visibility .35s ease}
+#appSplash.done{opacity:0;visibility:hidden;pointer-events:none}
+#appSplash .splashBox{text-align:center}
+#appSplash img{width:112px;height:112px;object-fit:contain;border-radius:26px;background:#fff;box-shadow:0 16px 48px rgba(43,68,105,.10)}
+#appSplash b{display:block;margin-top:18px;font-size:21px;color:#18233a}
+#appSplash span{display:block;margin-top:7px;font-size:14px;color:#7a89a1}
+#appSplash .spin{width:34px;height:34px;margin:18px auto 0;border-radius:50%;border:4px solid #e5ebf3;border-top-color:#168fd9;animation:ceniSpin .8s linear infinite}
+@keyframes ceniSpin{to{transform:rotate(360deg)}}#appFrame{position:absolute;left:0;top:0;width:100%;height:calc(100% + 64px);border:0;background:#fff;transform-origin:0 0}@media(max-width:600px){#appFrame{width:105.27%;height:calc(105.27% + 68px);transform:scale(.95)}}.cloudMask{position:absolute;z-index:80;left:0;right:0;bottom:0;height:10px;background:linear-gradient(180deg,rgba(247,249,252,.95),#f7f9fc);border-top:1px solid rgba(226,231,239,.75);pointer-events:auto}
+#pushGate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(20,31,52,.20);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}#pushGate .box{width:min(360px,calc(100vw - 38px));padding:24px 20px;border-radius:28px;background:rgba(252,253,255,.94);box-shadow:0 24px 70px rgba(39,56,88,.22);text-align:center}#pushGate .bell{font-size:38px}#pushGate b{display:block;font-size:20px;margin:10px 0 6px}#pushGate p{font-size:13px;line-height:1.45;color:#71809a;margin:0 0 17px}#pushGate button{width:100%;min-height:48px;border:0;border-radius:15px;background:linear-gradient(135deg,#1595df,#7254d9);color:#fff;font-size:14px;font-weight:800}#pushGate .later{margin-top:9px;background:transparent;color:#71809a;border:1px solid #e3e8f1}
+</style></head>
+<body class="installing">
+<main class="wrap" id="installView"><section class="card"><img class="logo" src="./icons/icon-512.png?v=20" alt="Три Цены"><h1>Три Цены Finance RU</h1><p class="sub">Установите приложение на экран телефона. После установки запускайте Finance только с фирменного ярлыка.</p><div class="steps" id="iosSteps"><div class="step"><div class="n">1</div><div><b>Откройте страницу в Safari</b><span>На iPhone установка выполняется именно из Safari.</span></div></div><div class="step"><div class="n">2</div><div><b>Нажмите «Поделиться»</b><span>Кнопка со стрелкой вверх находится в панели Safari.</span></div></div><div class="step"><div class="n">3</div><div><b>Выберите «На экран Домой»</b><span>Оставьте включённым «Открыть как веб-приложение».</span></div></div><div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>На экране появится «Три Цены Finance RU».</span></div></div></div><div class="steps" id="androidSteps" hidden><div class="step"><div class="n">1</div><div><b>Откройте страницу в Chrome</b><span>Используйте меню браузера «Установить приложение».</span></div></div><div class="step"><div class="n">2</div><div><b>Подтвердите установку</b><span>После этого запускайте Finance с нового ярлыка.</span></div></div></div><button class="install" id="installBtn" hidden>Установить приложение</button><p class="note">Кнопки «Открыть Finance» здесь нет специально — эта страница только для установки.</p></section></main>
+<div id="appView" hidden>
+<div id="appSplash"><div class="splashBox"><img src="./icons/icon-512.png?v=20" alt="Три Цены"><b>Три Цены Finance RU</b><span>Загружаем финансовую платформу…</span><div class="spin"></div></div></div>
+<iframe id="appFrame" title="Три Цены Finance RU" allow="clipboard-read; clipboard-write; camera; microphone"></iframe>
+<div class="cloudMask" aria-hidden="true"></div>
+</div>
+<div id="pushGate" hidden><div class="box"><div class="bell">🔔</div><b>Включить уведомления</b><p>Разрешите «Три Цены Finance RU» присылать системные уведомления этого устройства, даже когда приложение закрыто.</p><button id="pushYes">Включить уведомления</button><button class="later" id="pushLater">Не сейчас</button><div id="pushMsg" class="note"></div></div></div>
+<script>
+const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell=1&source=launcher_v23';
+const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+const ua=navigator.userAgent||'',android=/Android/i.test(ua);
+let deferredPrompt=null,bootstrap=null,bootstrapEpoch=0,pushBusy=false,pushQueued=false,pushQueuedInteractive=false,pushQueuedRequestId='',appOpened=false,revealTimer=null,frameLoadCount=0,preloginGate=false,pendingInteractiveRequestId='';
+let lastPostedSignature='',lastPostedAt=0;
+const frame=document.getElementById('appFrame'),gate=document.getElementById('pushGate'),msg=document.getElementById('pushMsg');
+const PUSH_GATE_DONE_KEY='3ceni_push_gate_completed';
+const AUTH_TOKEN_KEY='3ceni_finance_resume_token_launcher_v20';
+const DEVICE_ID_KEY='3ceni_launcher_device_id_v23';
+function launcherAuthToken(){try{return localStorage.getItem(AUTH_TOKEN_KEY)||''}catch(e){return ''}}
+function rememberLauncherAuth(token){try{if(token)localStorage.setItem(AUTH_TOKEN_KEY,String(token))}catch(e){}}
+function forgetLauncherAuth(){try{localStorage.removeItem(AUTH_TOKEN_KEY)}catch(e){}}
+function launcherDeviceId(){
+  try{
+    let id=localStorage.getItem(DEVICE_ID_KEY)||'';
+    if(!id){id='launcher-'+(crypto&&crypto.randomUUID?crypto.randomUUID():(Date.now().toString(36)+'-'+Math.random().toString(36).slice(2)));localStorage.setItem(DEVICE_ID_KEY,id);}
+    return id;
+  }catch(e){return 'launcher-session-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);}
+}
+const DEVICE_ID=launcherDeviceId();
+function appTarget(extraParams=null){
+  const u=new URL(TARGET),token=launcherAuthToken();
+  if(token)u.searchParams.set('_session',token);
+  if(extraParams){for(const [k,v] of Object.entries(extraParams)){if(v!==undefined&&v!==null&&String(v)!=='')u.searchParams.set(k,String(v));}}
+  return u.toString();
+}
+function gateCompleted(){try{return localStorage.getItem(PUSH_GATE_DONE_KEY)==='1'}catch(e){return false}}
+function completeGate(){try{localStorage.setItem(PUSH_GATE_DONE_KEY,'1')}catch(e){};try{gate.hidden=true}catch(e){}}
+function postToApp(payload){try{if(frame.contentWindow)frame.contentWindow.postMessage(payload,'*')}catch(e){}}
+function postState(state,context=null,requestId='',endpoint=''){
+  postToApp({type:'3ceni-push-state-v19',state:state||'unsupported',launcher:true,login:String((context&&context.login)||''),deviceId:DEVICE_ID,endpoint:String(endpoint||''),requestId:String(requestId||''),protocol:23});
+}
+function b64ToBytes(value){const padding='='.repeat((4-value.length%4)%4),base64=(value+padding).replace(/-/g,'+').replace(/_/g,'/'),raw=atob(base64);return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)))}
+function sameBootstrap(context,epoch){return !!(context&&bootstrap&&epoch===bootstrapEpoch&&String(bootstrap.login||'')===String(context.login||'')&&String(bootstrap.token||'')===String(context.token||''))}
+function queuePush(interactive=false,requestId=''){
+  pushQueued=true;pushQueuedInteractive=pushQueuedInteractive||!!interactive;if(requestId)pushQueuedRequestId=String(requestId);
+}
+function bindSubscriptionToServer(sub,context,requestId=''){
+  if(!context||!sub)return false;
+  const obj=sub.toJSON?sub.toJSON():sub,endpoint=String(obj.endpoint||'');if(!endpoint)return false;
+  const signature=String(context.login||'')+'|'+endpoint+'|'+DEVICE_ID;
+  const now=Date.now();
+  if(signature===lastPostedSignature&&now-lastPostedAt<700)return true;
+  lastPostedSignature=signature;lastPostedAt=now;
+  postToApp({type:'3ceni-push-subscription-v19',launcher:true,login:context.login,token:context.token,subscription:obj,deviceId:DEVICE_ID,requestId:String(requestId||''),protocol:23});
+  return true;
+}
+async function ensurePush(interactive=false,requestId=''){
+  if(pushBusy){queuePush(interactive,requestId);return;}
+  if(!('serviceWorker'in navigator)||!('PushManager'in window)||!window.Notification){postState('unsupported',bootstrap,requestId);return;}
+  pushBusy=true;
+  const epoch=bootstrapEpoch;
+  const context=bootstrap?{login:String(bootstrap.login||''),token:String(bootstrap.token||''),publicKey:String(bootstrap.publicKey||'')}:null;
+  try{
+    let permission=Notification.permission;
+    if(permission==='default'){
+      if(!interactive){postState('default',context,requestId);gate.hidden=true;return;}
+      permission=await Notification.requestPermission();completeGate();
+    }
+    if(permission==='granted')completeGate();
+    if(permission!=='granted'){
+      postState(permission||'default',context,requestId);gate.hidden=true;
+      if(preloginGate){preloginGate=false;openApp();}
+      return;
+    }
+    try{localStorage.setItem('3ceni_prelogin_push_permission','granted')}catch(e){}
+    const reg=await navigator.serviceWorker.register('./sw.js?v=20',{updateViaCache:'none'});await navigator.serviceWorker.ready;
+    try{
+      if(!localStorage.getItem('3ceni_push_welcome_v8')){
+        await reg.showNotification('Три Цены Finance RU',{body:'Добро пожаловать в Три Цены финансовую платформу.',icon:'./icons/icon-192.png?v=20',badge:'./icons/icon-192.png?v=20',tag:'3ceni-welcome',data:{url:'./?source=pwa&v=20'}});
+        localStorage.setItem('3ceni_push_welcome_v8','1');
+      }
+    }catch(e){console.warn('3Ceni welcome notification',e)}
+    if(!context){
+      postState('granted',null,requestId);gate.hidden=true;
+      if(preloginGate){preloginGate=false;openApp();}
+      return;
+    }
+    if(!sameBootstrap(context,epoch)){queuePush(false,requestId);return;}
+    let sub=await reg.pushManager.getSubscription();
+    if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64ToBytes(context.publicKey)});
+    if(!sameBootstrap(context,epoch)){queuePush(false,requestId);return;}
+    bindSubscriptionToServer(sub,context,requestId);
+    postState('granted',context,requestId,String((sub.toJSON?sub.toJSON():sub).endpoint||''));gate.hidden=true;
+  }catch(e){
+    console.error('3Ceni launcher push',e);
+    if(!appOpened&&!gateCompleted()){msg.textContent='Не удалось подключить уведомления. Попробуйте ещё раз.';gate.hidden=false;}
+    else{gate.hidden=true;postState((window.Notification&&Notification.permission)||'unsupported',context,requestId);}
+  }finally{
+    pushBusy=false;
+    if(pushQueued){const qi=pushQueuedInteractive,qr=pushQueuedRequestId;pushQueued=false;pushQueuedInteractive=false;pushQueuedRequestId='';setTimeout(()=>ensurePush(qi,qr),0);}
+  }
+}
+function requestPushFromApp(data={}){
+  if(!('serviceWorker'in navigator)||!('PushManager'in window)||!window.Notification){postState('unsupported',bootstrap,data.requestId);return;}
+  if(data.login&&bootstrap&&String(data.login)!==String(bootstrap.login||'')){postState(Notification.permission,bootstrap,data.requestId);return;}
+  const state=Notification.permission;
+  if(state==='granted'){ensurePush(false,data.requestId||'');return;}
+  if(state==='denied'){postState('denied',bootstrap,data.requestId);return;}
+  preloginGate=false;pendingInteractiveRequestId=String(data.requestId||'');
+  msg.textContent='Нажмите «Включить уведомления», чтобы подтвердить системное разрешение.';gate.hidden=false;
+}
+window.addEventListener('message',event=>{
+  const d=event.data||{};
+  if(d.type==='3ceni-auth-token-v19'){rememberLauncherAuth(d.token);return;}
+  if(d.type==='3ceni-auth-clear-v19'){
+    forgetLauncherAuth();bootstrap=null;bootstrapEpoch+=1;pushQueued=false;pushQueuedInteractive=false;pushQueuedRequestId='';pendingInteractiveRequestId='';lastPostedSignature='';return;
+  }
+  if(d.type==='3ceni-launcher-ping-v23'){
+    postToApp({type:'3ceni-launcher-pong-v23',launcher:true,login:String((bootstrap&&bootstrap.login)||d.login||''),deviceId:DEVICE_ID,requestId:String(d.requestId||''),protocol:23});return;
+  }
+  if(d.type==='3ceni-push-bootstrap-v19'){
+    const next={login:String(d.login||''),token:String(d.token||''),publicKey:String(d.publicKey||'')};
+    if(!next.login||!next.token||!next.publicKey)return;
+    const changed=!bootstrap||String(bootstrap.login||'')!==next.login||String(bootstrap.token||'')!==next.token||String(bootstrap.publicKey||'')!==next.publicKey;
+    bootstrap=next;if(changed){bootstrapEpoch+=1;lastPostedSignature='';}
+    ensurePush(false,d.requestId||'');return;
+  }
+  if(d.type==='3ceni-push-request-v19'){requestPushFromApp(d);return;}
+  if(d.type==='3ceni-push-state-request-v19'){
+    const state=(window.Notification&&Notification.permission)||'unsupported';postState(state,bootstrap,d.requestId||'');
+    if(state==='granted'&&bootstrap)ensurePush(false,d.requestId||'');return;
+  }
+  if(d.type==='3ceni-push-server-saved-v23'){
+    if(!bootstrap||String(d.login||'')!==String(bootstrap.login||''))return;
+    if(d.ok&&d.endpoint){try{localStorage.setItem('3ceni_bound_device_v23:'+String(d.login||'')+':'+DEVICE_ID,String(d.endpoint))}catch(e){}}
+    return;
+  }
+  // Legacy local-only test kept for old Finance builds. New Finance uses the
+  // authenticated server route and targets the exact current endpoint/device id.
+  if(d.type==='3ceni-push-test-v19'){
+    (async()=>{try{if(Notification.permission!=='granted')throw new Error('Уведомления не разрешены');const reg=await navigator.serviceWorker.ready;await reg.showNotification('Три Цены Finance RU',{body:'Тестовое уведомление. Всё работает ✅',icon:'./icons/icon-192.png?v=20',badge:'./icons/icon-192.png?v=20',tag:'3ceni-test-'+Date.now()});postToApp({type:'3ceni-push-test-result-v19',ok:true})}catch(e){postToApp({type:'3ceni-push-test-result-v19',ok:false,message:String(e&&e.message||e)})}})();
+  }
+});
+document.getElementById('pushYes').onclick=()=>{msg.textContent='';const rid=pendingInteractiveRequestId;pendingInteractiveRequestId='';ensurePush(true,rid)};
+document.getElementById('pushLater').onclick=()=>{const state=(window.Notification&&Notification.permission)||'unsupported';completeGate();postState(state,bootstrap,pendingInteractiveRequestId);pendingInteractiveRequestId='';if(preloginGate){preloginGate=false;openApp()}};
+function openApp(){
+  appOpened=true;completeGate();gate.dataset.locked='1';preloginGate=false;gate.hidden=true;
+  document.body.classList.remove('installing');document.getElementById('installView').hidden=true;document.getElementById('appView').hidden=false;
+  const splash=document.getElementById('appSplash');let settled=false;
+  const reveal=()=>{if(settled)return;settled=true;if(revealTimer)clearTimeout(revealTimer);revealTimer=setTimeout(()=>splash&&splash.classList.add('done'),260)};
+  frame.addEventListener('load',()=>{frameLoadCount+=1;if(revealTimer){clearTimeout(revealTimer);revealTimer=null}const mayBind=(frameLoadCount===1&&window.Notification&&Notification.permission==='granted');revealTimer=setTimeout(reveal,mayBind?1050:320)});
+  if(!frame.getAttribute('src'))frame.src=appTarget();setTimeout(reveal,12000);
+}
+if(standalone){let remembered=false;try{remembered=localStorage.getItem('3ceni_prelogin_push_permission')==='granted'}catch(e){}if(!gateCompleted()&&window.Notification&&Notification.permission==='default'&&!remembered&&('serviceWorker'in navigator)&&('PushManager'in window)){gate.hidden=false;preloginGate=true}else{openApp()}}else{if(android){document.getElementById('iosSteps').hidden=true;document.getElementById('androidSteps').hidden=false}window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBtn').hidden=false});document.getElementById('installBtn').onclick=async()=>{if(!deferredPrompt)return;deferredPrompt.prompt();await deferredPrompt.userChoice;deferredPrompt=null;document.getElementById('installBtn').hidden=true}}
+if('serviceWorker'in navigator)navigator.serviceWorker.register('./sw.js?v=20',{updateViaCache:'none'}).then(r=>r.update()).catch(()=>{});
+</script>
+</body></html>
