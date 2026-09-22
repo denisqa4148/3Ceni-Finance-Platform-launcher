@@ -20,11 +20,18 @@
 #appSplash .spin{width:34px;height:34px;margin:18px auto 0;border-radius:50%;border:4px solid #e5ebf3;border-top-color:#168fd9;animation:ceniSpin .8s linear infinite}
 @keyframes ceniSpin{to{transform:rotate(360deg)}}#appFrame{position:absolute;left:0;top:0;width:100%;height:calc(100% + 64px);border:0;background:#fff;transform-origin:0 0}@media(max-width:600px){#appFrame{width:105.27%;height:calc(105.27% + 68px);transform:scale(.95)}}.cloudMask{position:absolute;z-index:80;left:0;right:0;bottom:0;height:10px;background:linear-gradient(180deg,rgba(247,249,252,.95),#f7f9fc);border-top:1px solid rgba(226,231,239,.75);pointer-events:auto}
 #pushGate{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(20,31,52,.20);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px)}#pushGate .box{width:min(360px,calc(100vw - 38px));padding:24px 20px;border-radius:28px;background:rgba(252,253,255,.94);box-shadow:0 24px 70px rgba(39,56,88,.22);text-align:center}#pushGate .bell{font-size:38px}#pushGate b{display:block;font-size:20px;margin:10px 0 6px}#pushGate p{font-size:13px;line-height:1.45;color:#71809a;margin:0 0 17px}#pushGate button{width:100%;min-height:48px;border:0;border-radius:15px;background:linear-gradient(135deg,#1595df,#7254d9);color:#fff;font-size:14px;font-weight:800}#pushGate .later{margin-top:9px;background:transparent;color:#71809a;border:1px solid #e3e8f1}
+#appSplash .splashBox{max-width:380px;padding:24px}
+#launchStatus{line-height:1.5}
+#launchRecovery{margin-top:20px;display:grid;gap:12px}
+#launchRecovery button,#launchRecovery a{border-radius:14px;padding:12px 16px;font:600 14px -apple-system,BlinkMacSystemFont,Segoe UI,sans-serif;cursor:pointer;text-decoration:none}
+#launchRecovery button{background:#6f5cff;color:white;border:0}
+#launchRecovery a{background:white;border:1px solid #d8ddeb;color:#495b83}
+@media(prefers-reduced-motion:reduce){#appSplash .spin{animation-duration:1.8s}}
 </style></head>
 <body class="installing">
 <main class="wrap" id="installView"><section class="card"><img class="logo" src="./icons/icon-512.png?v=27" alt="Три Цены"><h1>Три Цены Finance RU</h1><p class="sub">Установите приложение на экран телефона. После установки запускайте Finance только с фирменного ярлыка.</p><div class="steps" id="iosSteps"><div class="step"><div class="n">1</div><div><b>Откройте страницу в Safari</b><span>На iPhone установка выполняется именно из Safari.</span></div></div><div class="step"><div class="n">2</div><div><b>Нажмите «Поделиться»</b><span>Кнопка со стрелкой вверх находится в панели Safari.</span></div></div><div class="step"><div class="n">3</div><div><b>Выберите «На экран Домой»</b><span>Оставьте включённым «Открыть как веб-приложение».</span></div></div><div class="step"><div class="n">4</div><div><b>Нажмите «Добавить»</b><span>На экране появится «Три Цены Finance RU».</span></div></div></div><div class="steps" id="androidSteps" hidden><div class="step"><div class="n">1</div><div><b>Откройте страницу в Chrome</b><span>Используйте меню браузера «Установить приложение».</span></div></div><div class="step"><div class="n">2</div><div><b>Подтвердите установку</b><span>После этого запускайте Finance с нового ярлыка.</span></div></div></div><button class="install" id="installBtn" hidden>Установить приложение</button><p class="note">Кнопки «Открыть Finance» здесь нет специально — эта страница только для установки.</p></section></main>
 <div id="appView" hidden>
-<div id="appSplash"><div class="splashBox"><img src="./icons/icon-512.png?v=27" alt="Три Цены"><b>Три Цены Finance RU</b><span>Загружаем финансовую платформу…</span><div class="spin"></div></div></div>
+<div id="appSplash"><div class="splashBox"><img src="./icons/icon-512.png?v=27" alt="Три Цены"><b>Три Цены Finance RU</b><span id="launchStatus" role="status" aria-live="polite">Подключаемся к Finance…</span><div class="spin"></div><div id="launchRecovery" hidden><button id="retryLaunch">Повторить вход</button><a id="openBrowser" target="_blank" rel="noopener noreferrer">Открыть в браузере</a></div></div></div>
 <iframe id="appFrame" title="Три Цены Finance RU" allow="clipboard-read; clipboard-write; camera; microphone"></iframe>
 <div class="cloudMask" aria-hidden="true"></div>
 </div>
@@ -93,12 +100,56 @@ function postSubscription(sub,context,requestId='',peer=null){
   return true;
 }
 function b64ToBytes(value){const padding='='.repeat((4-value.length%4)%4),base64=(value+padding).replace(/-/g,'+').replace(/_/g,'/'),raw=atob(base64);return Uint8Array.from([...raw].map(c=>c.charCodeAt(0)))}
+function boundedPromise(promise,ms,label){
+  let timer;
+  return Promise.race([promise,new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error(label)),ms)})]).finally(()=>clearTimeout(timer));
+}
+function isFinancePeer(event){
+  // WindowProxy.parent remains available across origins. Accept the real
+  // Streamlit descendant frame, not arbitrary windows sharing this origin.
+  try{
+    let node=event.source;
+    for(let depth=0;node&&depth<16;depth++){
+      if(node===frame.contentWindow)return true;
+      const parent=node.parent;if(!parent||parent===node)break;node=parent;
+    }
+  }catch(_){}
+  return false;
+}
+let appReady=false,appWaitTimer=null;
+function markFinanceReady(){
+  if(appReady)return;
+  appReady=true;clearTimeout(appWaitTimer);
+  const splash=document.getElementById('appSplash');
+  if(splash)splash.classList.add('done');
+}
+function updateLaunchStatus(text){
+  if(appReady)return;
+  const label=document.getElementById('launchStatus');
+  if(label)label.textContent=text;
+}
+function showLaunchRecovery(){
+  if(appReady)return;
+  updateLaunchStatus(navigator.onLine===false
+    ?'Нет связи с сервером. Проверьте интернет.'
+    :'Сервер отвечает дольше обычного. Можно подождать или повторить вход.');
+  document.getElementById('launchRecovery').hidden=false;
+}
+window.addEventListener('message',event=>{
+  if(!isFinancePeer(event))return;
+  const data=event.data||{};
+  if(['3ceni-app-ready-v19','3ceni-pwa-ready-v19'].includes(data.type)){
+    if(['login','ready','authenticated'].includes(data.state))markFinanceReady();
+  }else if(data.type==='3ceni-app-loading-v1'){
+    updateLaunchStatus(String(data.message||'Подготавливаем данные…').slice(0,180));
+  }
+});
 function getLauncherRegistration(){
   if(launcherRegistration)return Promise.resolve(launcherRegistration);
   if(!launcherRegistrationPromise){
-    launcherRegistrationPromise=navigator.serviceWorker.register('./sw.js?v=26',{updateViaCache:'none'}).then(reg=>{
+    launcherRegistrationPromise=boundedPromise(navigator.serviceWorker.register('./sw.js?build=perf101-1',{updateViaCache:'none'}),10000,'Service Worker registration timed out').then(reg=>{
       launcherRegistration=reg;try{reg.update().catch(()=>{})}catch(_){}
-      return navigator.serviceWorker.ready.then(()=>reg);
+      return boundedPromise(navigator.serviceWorker.ready,10000,'Service Worker activation timed out').then(()=>reg);
     }).catch(err=>{launcherRegistrationPromise=null;throw err});
   }
   return launcherRegistrationPromise;
@@ -236,6 +287,7 @@ async function requestPushFromApp(data={},peer=null){
 }
 
 window.addEventListener('message',event=>{
+  if(!isFinancePeer(event))return;
   const d=event.data||{},peer=rememberPeer(event.source);
   if(!d||typeof d.type!=='string'||!d.type.startsWith('3ceni-'))return;
   if(d.type==='3ceni-auth-token-v19'){rememberLauncherAuth(d.token);return}
@@ -284,12 +336,29 @@ document.getElementById('pushLater').onclick=()=>{
 };
 function openApp(){
   appOpened=true;gate.dataset.locked='1';
-  document.body.classList.remove('installing');document.getElementById('installView').hidden=true;document.getElementById('appView').hidden=false;
-  const splash=document.getElementById('appSplash');let settled=false;
-  const reveal=()=>{if(settled)return;settled=true;if(revealTimer)clearTimeout(revealTimer);revealTimer=setTimeout(()=>splash&&splash.classList.add('done'),260)};
-  frame.addEventListener('load',()=>{frameLoadCount+=1;if(revealTimer){clearTimeout(revealTimer);revealTimer=null}const mayBind=(frameLoadCount===1&&window.Notification&&Notification.permission==='granted');revealTimer=setTimeout(reveal,mayBind?1050:320)});
-  if(!frame.getAttribute('src'))frame.src=appTarget();setTimeout(reveal,12000);
+  document.body.classList.remove('installing');
+  document.getElementById('installView').hidden=true;
+  document.getElementById('appView').hidden=false;
+  // iframe.onload only means the outer Cloud HTML arrived, NOT Finance ready.
+  // Keep the branded shell until the inner login/app publishes readiness.
+  frame.addEventListener('load',()=>{frameLoadCount+=1;});
+  frame.addEventListener('error',showLaunchRecovery);
+  document.getElementById('retryLaunch').onclick=()=>{
+    clearTimeout(appWaitTimer);appReady=false;
+    bootstrap=null;bootstrapPeer=null;bootstrapEpoch+=1;pushQueue=[];peers.clear();
+    pendingInteractiveRequestId='';pendingInteractivePeer=null;gate.hidden=true;
+    document.getElementById('appSplash').classList.remove('done');
+    document.getElementById('launchRecovery').hidden=true;
+    updateLaunchStatus('Подключаемся к Finance…');
+    frame.src=appTarget({_launch_retry:Date.now()});
+    appWaitTimer=setTimeout(showLaunchRecovery,30000);
+  };
+  const direct=new URL(TARGET);direct.search='';
+  document.getElementById('openBrowser').href=direct.toString();
+  if(!frame.getAttribute('src'))frame.src=appTarget();
+  appWaitTimer=setTimeout(showLaunchRecovery,30000);
 }
+
 if(standalone){
   // Finance is always the first priority. Push setup starts only after the
   // authenticated bootstrap arrives, so notification/network problems can never
