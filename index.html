@@ -38,7 +38,7 @@
 </div>
 <div id="pushGate" hidden><div class="box"><div class="bell">🔔</div><b>Включить уведомления</b><p>Разрешите «Три Цены Finance RU» присылать системные уведомления этого устройства, даже когда приложение закрыто.</p><button id="pushYes">Включить уведомления</button><button class="later" id="pushLater">Не сейчас</button><div id="pushMsg" class="note"></div></div></div>
 <script>
-const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell=1&source=launcher_v29';
+const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell=1&source=launcher_v30';
 const FINANCE_ORIGIN=new URL(TARGET).origin;
 const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 const ua=navigator.userAgent||'',android=/Android/i.test(ua);
@@ -69,23 +69,6 @@ function appTarget(extraParams=null){
   const u=new URL(TARGET);
   if(extraParams){for(const [k,v] of Object.entries(extraParams)){if(v!==undefined&&v!==null&&String(v)!=='')u.searchParams.set(k,String(v))}}
   return u.toString();
-}
-async function restoredAppTarget(extraParams=null){
-  const token=launcherAuthToken();
-  if(!token)return appTarget(extraParams);
-  try{
-    const response=await boundedPromise(fetch(FINANCE_ORIGIN+'/api/auth/resume',{
-      method:'POST',mode:'cors',cache:'no-store',credentials:'omit',
-      headers:{'Content-Type':'text/plain;charset=UTF-8'},body:token
-    }),10000,'Auth resume timed out');
-    if(!response.ok)throw new Error('Auth resume rejected '+response.status);
-    const result=await response.json();
-    if(!result.ticket)throw new Error('Auth resume ticket missing');
-    return appTarget({...extraParams,_resume_ticket:result.ticket});
-  }catch(e){
-    console.warn('3Ceni launcher auth resume',e);
-    return appTarget(extraParams);
-  }
 }
 function gateCompleted(){try{return localStorage.getItem(PUSH_GATE_DONE_KEY)==='1'}catch(e){return false}}
 function completeGate(){try{localStorage.setItem(PUSH_GATE_DONE_KEY,'1')}catch(e){};try{gate.hidden=true}catch(e){}}
@@ -164,7 +147,7 @@ window.addEventListener('message',event=>{
 function getLauncherRegistration(){
   if(launcherRegistration)return Promise.resolve(launcherRegistration);
   if(!launcherRegistrationPromise){
-    launcherRegistrationPromise=boundedPromise(navigator.serviceWorker.register('./sw.js?build=auth-v29',{updateViaCache:'none'}),10000,'Service Worker registration timed out').then(reg=>{
+    launcherRegistrationPromise=boundedPromise(navigator.serviceWorker.register('./sw.js?build=auth-v30',{updateViaCache:'none'}),10000,'Service Worker registration timed out').then(reg=>{
       launcherRegistration=reg;try{reg.update().catch(()=>{})}catch(_){}
       return boundedPromise(navigator.serviceWorker.ready,10000,'Service Worker activation timed out').then(()=>reg);
     }).catch(err=>{launcherRegistrationPromise=null;throw err});
@@ -369,12 +352,12 @@ function openApp(){
     document.getElementById('appSplash').classList.remove('done');
     document.getElementById('launchRecovery').hidden=true;
     updateLaunchStatus('Подключаемся к Finance…');
-    void restoredAppTarget({_launch_retry:Date.now()}).then(url=>{frame.src=url});
+    frame.src=appTarget({_launch_retry:Date.now()});
     appWaitTimer=setTimeout(showLaunchRecovery,30000);
   };
   const direct=new URL(TARGET);direct.search='';
   document.getElementById('openBrowser').href=direct.toString();
-  if(!frame.getAttribute('src'))void restoredAppTarget().then(url=>{if(!frame.getAttribute('src'))frame.src=url});
+  if(!frame.getAttribute('src'))frame.src=appTarget();
   appWaitTimer=setTimeout(showLaunchRecovery,30000);
 }
 if(standalone){

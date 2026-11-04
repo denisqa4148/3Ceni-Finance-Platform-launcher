@@ -1,7 +1,7 @@
-const CACHE='tri-ceny-finance-launcher-auth-v29';
+const CACHE='tri-ceny-finance-launcher-auth-v30';
 const PREFIX='tri-ceny-finance-launcher-';
 const SHELL=new URL('index.html',self.registration.scope).href;
-const STATIC=['./index.html','./manifest.webmanifest','./icons/apple-touch-icon.png?v=29','./icons/icon-192.png?v=29','./icons/icon-512.png?v=29'];
+const STATIC=['./index.html','./manifest.webmanifest','./icons/apple-touch-icon.png?v=30','./icons/icon-192.png?v=30','./icons/icon-512.png?v=30'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(async cache=>{
     // One unavailable icon must not prevent a new worker from activating.
