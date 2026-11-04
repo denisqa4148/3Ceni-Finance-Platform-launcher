@@ -1,7 +1,7 @@
-const CACHE='tri-ceny-finance-launcher-auth-v31';
+const CACHE='tri-ceny-finance-launcher-auth-v32';
 const PREFIX='tri-ceny-finance-launcher-';
 const SHELL=new URL('index.html',self.registration.scope).href;
-const STATIC=['./index.html','./manifest.webmanifest','./icons/apple-touch-icon.png?v=31','./icons/icon-192.png?v=31','./icons/icon-512.png?v=31'];
+const STATIC=['./index.html','./manifest.webmanifest','./icons/apple-touch-icon.png?v=32','./icons/icon-192.png?v=32','./icons/icon-512.png?v=32'];
 self.addEventListener('install',event=>{
   event.waitUntil(caches.open(CACHE).then(async cache=>{
     // One unavailable icon must not prevent a new worker from activating.
@@ -47,9 +47,9 @@ self.addEventListener('push',event=>{
   const title=data.title||'Три Цены Finance RU';
   const options={
     body:data.body||'Новое уведомление',
-    icon:'./icons/icon-192.png?v=31',badge:'./icons/icon-192.png?v=31',
+    icon:'./icons/icon-192.png?v=32',badge:'./icons/icon-192.png?v=32',
     tag:data.tag||'3ceni-notification',renotify:true,
-    data:{url:'./?source=pwa&v=31'}
+    data:{url:'./?source=pwa&v=32'}
   };
   event.waitUntil(self.registration.showNotification(title,options));
 });

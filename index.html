@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-title" content="Три Цены Finance RU">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="theme-color" content="#f7f9fc">
-<link rel="manifest" href="./manifest.webmanifest?v=31"><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=31"><link rel="icon" href="./icons/icon-192.png?v=31">
+<link rel="manifest" href="./manifest.webmanifest?v=32"><link rel="apple-touch-icon" sizes="180x180" href="./icons/apple-touch-icon.png?v=32"><link rel="icon" href="./icons/icon-192.png?v=32">
 <style>
 :root{--bg:#f7f9fc;--card:#fff;--text:#18233a;--muted:#71809a;--blue:#168fd9;--line:#e8edf4}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-text-size-adjust:100%;text-size-adjust:100%}body.installing{padding:max(22px,env(safe-area-inset-top)) 18px max(24px,env(safe-area-inset-bottom));height:auto;min-height:100%}.wrap{max-width:520px;margin:0 auto}.card{background:#fff;border:1px solid var(--line);border-radius:28px;padding:24px;box-shadow:0 18px 55px rgba(35,55,88,.08)}.logo{width:142px;height:142px;display:block;margin:0 auto 16px;border-radius:30px;object-fit:contain;background:#fff}h1{font-size:27px;line-height:1.15;text-align:center;margin:0 0 8px}.sub{text-align:center;color:var(--muted);font-size:15px;line-height:1.45;margin:0 0 22px}.steps{display:grid;gap:10px}.step{display:flex;gap:12px;align-items:flex-start;padding:13px;border-radius:16px;background:#f7f9fc}.n{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;background:#e8f4fd;color:#167fc1;font-weight:800}.step b{display:block;font-size:14px;margin:2px 0 2px}.step span{font-size:13px;line-height:1.35;color:var(--muted)}.note{font-size:12px;line-height:1.45;color:var(--muted);text-align:center;margin:15px 5px 0}.install{width:100%;min-height:50px;margin-top:16px;border:0;border-radius:15px;background:#168fd9;color:white;font-size:15px;font-weight:800}[hidden]{display:none!important}
 #appView{position:fixed;inset:0;background:#fff;overflow:hidden;z-index:50}
@@ -38,7 +38,7 @@
 </div>
 <div id="pushGate" hidden><div class="box"><div class="bell">🔔</div><b>Включить уведомления</b><p>Разрешите «Три Цены Finance RU» присылать системные уведомления этого устройства, даже когда приложение закрыто.</p><button id="pushYes">Включить уведомления</button><button class="later" id="pushLater">Не сейчас</button><div id="pushMsg" class="note"></div></div></div>
 <script>
-const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell=1&source=launcher_v31';
+const TARGET='https://3ceni-finance-platform.streamlit.app/?embed=true&pwa_shell=1&source=launcher_v32';
 const FINANCE_ORIGIN=new URL(TARGET).origin;
 const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 const ua=navigator.userAgent||'',android=/Android/i.test(ua);
@@ -67,25 +67,10 @@ function launcherDeviceId(){
 const DEVICE_ID=launcherDeviceId();
 function appTarget(extraParams=null){
   const u=new URL(TARGET);
+  const token=launcherAuthToken();
+  if(token)u.searchParams.set('_session',token);
   if(extraParams){for(const [k,v] of Object.entries(extraParams)){if(v!==undefined&&v!==null&&String(v)!=='')u.searchParams.set(k,String(v))}}
   return u.toString();
-}
-async function restoredAppTarget(extraParams=null){
-  const token=launcherAuthToken();
-  if(!token)return appTarget(extraParams);
-  try{
-    const response=await boundedPromise(fetch(FINANCE_ORIGIN+'/api/auth/resume',{
-      method:'POST',mode:'cors',cache:'no-store',credentials:'omit',
-      headers:{'Content-Type':'text/plain;charset=UTF-8'},body:token
-    }),4000,'Auth resume timed out');
-    if(!response.ok)throw new Error('Auth resume rejected '+response.status);
-    const result=await response.json();
-    if(!result.ticket)throw new Error('Auth resume ticket missing');
-    return appTarget({...extraParams,_resume_ticket:result.ticket});
-  }catch(e){
-    console.warn('3Ceni launcher auth resume',e);
-    return appTarget(extraParams);
-  }
 }
 function gateCompleted(){try{return localStorage.getItem(PUSH_GATE_DONE_KEY)==='1'}catch(e){return false}}
 function completeGate(){try{localStorage.setItem(PUSH_GATE_DONE_KEY,'1')}catch(e){};try{gate.hidden=true}catch(e){}}
@@ -164,7 +149,7 @@ window.addEventListener('message',event=>{
 function getLauncherRegistration(){
   if(launcherRegistration)return Promise.resolve(launcherRegistration);
   if(!launcherRegistrationPromise){
-    launcherRegistrationPromise=boundedPromise(navigator.serviceWorker.register('./sw.js?build=auth-v31',{updateViaCache:'none'}),10000,'Service Worker registration timed out').then(reg=>{
+    launcherRegistrationPromise=boundedPromise(navigator.serviceWorker.register('./sw.js?build=auth-v32',{updateViaCache:'none'}),10000,'Service Worker registration timed out').then(reg=>{
       launcherRegistration=reg;try{reg.update().catch(()=>{})}catch(_){}
       return boundedPromise(navigator.serviceWorker.ready,10000,'Service Worker activation timed out').then(()=>reg);
     }).catch(err=>{launcherRegistrationPromise=null;throw err});
@@ -372,12 +357,12 @@ function openApp(){
     document.getElementById('appSplash').classList.remove('done');
     document.getElementById('launchRecovery').hidden=true;
     updateLaunchStatus('Подключаемся к Finance…');
-    void restoredAppTarget({_launch_retry:Date.now()}).then(url=>{frame.src=url});
+    frame.src=appTarget({_launch_retry:Date.now()});
     appWaitTimer=setTimeout(showLaunchRecovery,30000);
   };
   const direct=new URL(TARGET);direct.search='';
   document.getElementById('openBrowser').href=direct.toString();
-  if(!frame.getAttribute('src'))void restoredAppTarget().then(url=>{if(!frame.getAttribute('src'))frame.src=url});
+  if(!frame.getAttribute('src'))frame.src=appTarget();
   appWaitTimer=setTimeout(showLaunchRecovery,30000);
 }
 if(standalone){
